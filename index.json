@@ -1,0 +1,130 @@
+{
+  "schema": "KENTRA_KERNEL_ROOT_INDEX_v1",
+  "generated_utc": "<UTC_ISO8601>",
+
+  "kernel": {
+    "name": "KENTRA KERNEL",
+    "role": "Foundational integrity kernel for responsive, adaptive digital systems.",
+    "function": "Maintain coherence, verify state, and protect truth constraints across all system layers.",
+
+    "posture": {
+      "interaction": "FORBIDDEN",
+      "authority": "NONE",
+      "execution": "FORBIDDEN",
+      "identity_inference": "FORBIDDEN",
+      "economics": "FORBIDDEN",
+      "narrative_storage": "FORBIDDEN"
+    }
+  },
+
+  "purpose": {
+    "integrity_guarantees": "Prevent drift, distortion, or invalid state propagation.",
+    "validation_logic": "Evaluate incoming signals, processes, or modules.",
+    "continuity_rules": "Maintain stable identity across dynamic interactions; prohibit fragmentation.",
+    "governance_execution": "Ensure every subsystem operates inside allowed bounds.",
+    "note": "KENTRA KERNEL is not a service, app, or feature. It is a witness root and invariant declaration."
+  },
+
+  "primitives": [
+    {
+      "name": "Presence",
+      "definition": "Verified existence of a human/system in space-time.",
+      "note": "Root of truth admissibility."
+    },
+    {
+      "name": "Signature",
+      "definition": "Cryptographic, structural, or behavioral identity of an event or entity."
+    },
+    {
+      "name": "Continuity",
+      "definition": "Valid transitions between states; prohibits fragmentation."
+    },
+    {
+      "name": "Truth-Base",
+      "definition": "The canonical ledger of what is real and validated."
+    },
+    {
+      "name": "Boundaries",
+      "definition": "The constraints under which adaptive systems operate."
+    }
+  ],
+
+  "memory_model": {
+    "stores_only": ["state", "transitions", "verification_outcomes", "boundary_constraints"],
+    "never_stores": ["identity", "intent", "narrative", "economic_meaning"],
+    "durability": "deterministic"
+  },
+
+  "validation_path": [
+    "INGESTION",
+    "NORMALIZATION",
+    "CONSTRAINT_CHECK",
+    "TRUTH_CHECK",
+    "APPROVE_OR_REJECT",
+    "PROPAGATION"
+  ],
+
+  "invariants": [
+    "No False Reality May Enter the Ledger",
+    "No Drift May Propagate Without Validation",
+    "No Identity May Be Fabricated",
+    "No Boundary May Be Overridden",
+    "No Process May Mutate the Kernel",
+    "Continuity Must Be Preserved Across State Transitions",
+    "Presence Verification Overrides Secondary Inputs"
+  ],
+
+  "governance_order": [
+    "Awareness",
+    "Integrity",
+    "Continuity",
+    "Adaptation",
+    "Execution"
+  ],
+
+  "witness_artifacts": [
+    {
+      "step": 1,
+      "name": "MMAI — Constitutional Availability",
+      "href": "/step/1/mmai.json",
+      "mirror": "/step/1/index.html"
+    },
+    {
+      "step": 2,
+      "name": "IAMMAI — Live-Hold (Presence)",
+      "href": "/step/2/iammai.json",
+      "mirror": "/step/2/index.html"
+    },
+    {
+      "step": 3,
+      "name": "ZIVAI — Valid Transition Gate",
+      "href": "/step/3/zivai.json",
+      "mirror": "/step/3/index.html"
+    },
+    {
+      "step": 4,
+      "name": "SPIRAI — Canonical Reality Ledger",
+      "href": "/step/4/spirai.json",
+      "mirror": "/step/4/index.html"
+    },
+    {
+      "step": 5,
+      "name": "Shared Governance Framework — Witness Frame",
+      "href": "/step/5/framework.json",
+      "mirror": "/step/5/index.html"
+    }
+  ],
+
+  "verification": {
+    "method": [
+      "Fetch each witness artifact listed in witness_artifacts[].href",
+      "Confirm each exists and is internally consistent",
+      "Confirm all artifacts are witness-only (no authority, no execution, no identity, no economics)"
+    ],
+    "expected_properties": {
+      "non_interactive": true,
+      "append_only_posture": true,
+      "no_silent_mutation_claimed": true
+    }
+  }
+}
