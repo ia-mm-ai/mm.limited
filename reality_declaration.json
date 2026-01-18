@@ -1,0 +1,38 @@
+{
+  "artifact_type": "REALITY_DECLARATION",
+  "version": "v3.0",
+  "status": "DECLARED",
+  "declaration_class": "NON_EXECUTING",
+  "mutation_rule": "EVOLVE_ONLY",
+  "timestamp_utc": "2026-01-19T00:22:00Z",
+  "declared_by": "Marko Markota"
+    "type": "HUMAN_AGENT",
+    "role": "DECLARANT",
+    "authority": "ATTESTATION_ONLY"
+  },
+  "statement": {
+    "scope": "REALITY_REFERENCE",
+    "claim": "All reality verification, enforcement, and continuity for this declaration is bound exclusively to the referenced canonical anchor.",
+    "limitations": [
+      "This declaration does not execute action.",
+      "This declaration does not grant authority.",
+      "This declaration does not confer legitimacy.",
+      "This declaration does not create truth."
+    ]
+  },
+  "canonical_reference": {
+    "anchor_type": "CANONICAL_INTEGRITY_ANCHOR",
+    "url": "https://event.limited/anchor.json"
+  },
+  "constraints": {
+    "no_execution": true,
+    "no_suppression": true,
+    "no_identity_inference": true,
+    "no_economic_effect": true,
+    "reference_only": true
+  },
+  "lineage": {
+    "supersedes": null,
+    "superseded_by": null
+  }
+}
