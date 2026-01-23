@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Consequences</title>
+    <style>
+      body {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        margin: 0;
+      }
+      header {
+        padding: 12px 16px;
+        border-bottom: 1px solid #eee;
+      }
+      main {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 12px;
+        padding: 12px;
+      }
+      label {
+        display: block;
+        font-size: 12px;
+        margin-top: 8px;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 6px;
+      }
+      button {
+        margin-top: 10px;
+        padding: 8px;
+      }
+      pre {
+        white-space: pre-wrap;
+        background: #0b0b0b;
+        color: #eaeaea;
+        padding: 12px;
+        border-radius: 6px;
+      }
+      .hint {
+        font-size: 12px;
+        opacity: 0.7;
+      }
+      @media (max-width: 800px) {
+        main {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <strong>See the consequence.</strong>
+      <span class="hint">No explanation. Change inputs.</span>
+    </header>
+
+    <main>
+      <section>
+        <label>Intent</label>
+        <select id="intent">
+          <option>observe</option>
+          <option>ticket-scan</option>
+          <option>refund</option>
+        </select>
+
+        <label>Event</label>
+        <input id="event" value="gate:A1" />
+
+        <label>Actor</label>
+        <input id="actor" value="agent-001" />
+
+        <label>Scope</label>
+        <select id="scope">
+          <option>public</option>
+          <option>locked</option>
+        </select>
+
+        <button id="run">Run</button>
+        <div class="hint">URL = artifact. Share it.</div>
+      </section>
+
+      <section>
+        <pre id="out">↺</pre>
+      </section>
+    </main>
+
+    <script>
+      const intentEl = document.getElementById("intent");
+      const eventEl = document.getElementById("event");
+      const actorEl = document.getElementById("actor");
+      const scopeEl = document.getElementById("scope");
+      const outEl = document.getElementById("out");
+      const runBtn = document.getElementById("run");
+
+      async function run() {
+        const q = new URLSearchParams({
+          intent: intentEl.value,
+          event: eventEl.value,
+          actor: actorEl.value,
+          scope: scopeEl.value,
+        });
+
+        const url = new URL("/outcome", location.origin);
+        url.search = q.toString();
+
+        outEl.textContent = "↺";
+        history.replaceState({}, "", `?${q.toString()}`);
+
+        try {
+          const r = await fetch(url.toString(), {
+            cache: "no-store",
+            headers: { accept: "application/json" },
+          });
+
+          if (!r.ok) {
+            throw new Error(`HTTP ${r.status}`);
+          }
+
+          const text = await r.text();
+          let json;
+          try {
+            json = JSON.parse(text);
+          } catch {
+            throw new Error("Non-JSON response");
+          }
+
+          outEl.textContent = JSON.stringify(json, null, 2);
+        } catch (e) {
+          outEl.textContent =
+            "Outcome unavailable.\n" +
+            `Tried: ${url.toString()}\n\n` +
+            "Most common cause:\n" +
+            "• Deployed via direct folder upload to Cloudflare Pages\n" +
+            "• Pages Functions (/functions/outcome.ts) do not execute\n\n" +
+            "Fix:\n" +
+            "• Deploy via Git integration or Wrangler\n\n" +
+            `Error: ${String(e && e.message ? e.message : e)}`;
+        }
+      }
+
+      // Auto-run from URL
+      const p = new URLSearchParams(location.search);
+      if (p.get("intent")) intentEl.value = p.get("intent");
+      if (p.get("event")) eventEl.value = p.get("event");
+      if (p.get("actor")) actorEl.value = p.get("actor");
+      if (p.get("scope")) scopeEl.value = p.get("scope");
+
+      runBtn.addEventListener("click", run);
+      run();
+    </script>
+  </body>
+</html>
