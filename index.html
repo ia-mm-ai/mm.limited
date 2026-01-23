@@ -1,109 +1,484 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="index" />
-  <title>mm.limited — Reality 3.0</title>
-  <style>
-    body{margin:0; padding:36px 18px; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; background:#fff; color:#111;}
-    .wrap{max-width:980px; margin:0 auto;}
-    h1{margin:0 0 6px; font-size:44px; letter-spacing:-0.02em;}
-    .sub{color:#444; margin:0 0 22px;}
-    h2{margin:28px 0 10px; font-size:22px;}
-    p, li{line-height:1.55;}
-    .box{border:1px solid #ddd; border-radius:12px; padding:14px 16px; background:#fafafa;}
-    .row{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;}
-    .btn{
-      display:inline-block;
-      padding:7px 12px;
-      border:1px solid #ccc;
-      border-radius:999px;
-      background:#f3f3f3;
-      color:#111;
-      text-decoration:none;
-      font-size:13px;
-      white-space:nowrap;
-    }
-    .btn:hover{background:#e8e8e8;}
-    .meta{margin-top:26px; color:#666; font-size:13px;}
-    .small{font-size:12px; color:#555;}
-    a{color:#0b57d0; text-decoration:none;}
-    a:hover{text-decoration:underline;}
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <h1>REALITY 3.0</h1>
-    <p class="sub">Read-only. Reference surface. No execution. No authority. No suppression. No economics.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index" />
+    <title>MMMM - MM-Mental-Model</title>
 
-    <h2>Reality Stack</h2>
-    <div class="box">
-      <div class="row">
-        <div class="small">Canonical PDF hosted on <b>event.limited</b></div>
-        <a class="btn" href="https://event.limited/pdfs/THE%20REALITY%20STACK.pdf" target="_blank" rel="noopener">Open PDF</a>
+    <style>
+      :root {
+        --bg: #0b0f17;
+        --panel: rgba(255, 255, 255, 0.06);
+        --panel2: rgba(255, 255, 255, 0.04);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.68);
+        --faint: rgba(255, 255, 255, 0.5);
+        --line: rgba(255, 255, 255, 0.1);
+        --shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+        --radius: 18px;
+        --mono:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        --sans:
+          ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+          Arial;
+        --link: rgba(150, 200, 255, 0.95);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: var(--sans);
+        color: var(--text);
+        background:
+          radial-gradient(
+            1200px 700px at 20% 10%,
+            rgba(90, 140, 255, 0.12),
+            transparent 55%
+          ),
+          radial-gradient(
+            1000px 600px at 85% 25%,
+            rgba(255, 120, 190, 0.1),
+            transparent 60%
+          ),
+          radial-gradient(
+            800px 600px at 50% 90%,
+            rgba(80, 255, 170, 0.06),
+            transparent 55%
+          ),
+          var(--bg);
+        line-height: 1.55;
+      }
+      a {
+        color: var(--link);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 28px 18px 80px;
+      }
+
+      .topbar {
+        border: 1px solid var(--line);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.03)
+        );
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
+        padding: 14px 16px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .title h1 {
+        margin: 0;
+        font-size: 18px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-weight: 850;
+      }
+      .title .sub {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 13px;
+        font-family: var(--mono);
+      }
+
+      .pills {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .pill {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 999px;
+        padding: 8px 10px;
+        font-size: 12px;
+        color: var(--muted);
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        white-space: nowrap;
+        font-family: var(--mono);
+      }
+      .pill b {
+        color: var(--text);
+        font-weight: 850;
+      }
+
+      .notice {
+        margin-top: 12px;
+        border: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.22);
+        border-radius: var(--radius);
+        padding: 12px 14px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .notice b {
+        color: var(--text);
+      }
+
+      .card {
+        margin-top: 14px;
+        border: 1px solid var(--line);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.03)
+        );
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
+        overflow: hidden;
+      }
+      .hd {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .hd h2 {
+        margin: 0;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 900;
+      }
+      .bd {
+        padding: 14px 16px 16px;
+      }
+
+      .row {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.035);
+        padding: 12px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .row + .row {
+        margin-top: 10px;
+      }
+
+      .left {
+        min-width: 0;
+      }
+      .name {
+        font-size: 14px;
+        font-weight: 800;
+      }
+      .desc {
+        margin-top: 4px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .meta {
+        margin-top: 4px;
+        font-size: 12px;
+        color: var(--faint);
+        font-family: var(--mono);
+      }
+
+      .btn {
+        font-family: var(--mono);
+        font-size: 12px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+        white-space: nowrap;
+      }
+
+      footer {
+        margin-top: 18px;
+        color: var(--faint);
+        font-size: 12px;
+        text-align: center;
+      }
+      footer .line {
+        margin: 14px auto;
+        height: 1px;
+        max-width: 220px;
+        background: var(--line);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <div class="title">
+          <h1>MM-Mental-Model 1.12</h1>
+          <div class="sub">Read-only framework.</div>
+        </div>
+        <div class="pills">
+          <div class="pill"><span>surface</span><b>PUBLIC</b></div>
+          <div class="pill"><span>interaction</span><b>FORBIDDEN</b></div>
+          <div class="pill"><span>execution</span><b>FORBIDDEN</b></div>
+          <div class="pill"><span>identity</span><b>FORBIDDEN</b></div>
+          <div class="pill"><span>economics</span><b>FORBIDDEN</b></div>
+        </div>
+      </header>
+
+      <div class="notice">
+        <b>Posture:</b> The root framework is recognized, not invented.
+        Authorship here does not imply ownership, originality, or control.
       </div>
-      <ol>
-        <li>Substrate</li>
-        <li>Signal</li>
-        <li>Awareness</li>
-        <li>Intent</li>
-        <li>Event</li>
-        <li>Presence</li>
-        <li>Demand</li>
-        <li>Verification</li>
-        <li>Resolution (Law)</li>
-        <li>Continuity</li>
-        <li>Ledger</li>
-        <li>Identity</li>
-        <li>Co-Agency</li>
-        <li>Civilization Layer</li>
-      </ol>
+
+      <section class="card">
+        <div class="hd"><h2>Core Architecture</h2></div>
+        <div class="bd">
+          <div class="row">
+            <div class="left">
+              <div class="name">Reality Stack</div>
+              <div class="desc">
+                Layered model: Signal → Awareness → Intent → Event → Presence →
+                Demand → Verification → Resolution → Continuity → Ledger →
+                Identity → Co-Agency → Civilization.
+              </div>
+              <div class="meta">PDF: THE REALITY STACK</div>
+            </div>
+            <a
+              class="btn"
+              href="https://mm.limited/pdfs/THE%20REALITY%20STACK.pdf"
+              target="_blank"
+              rel="noopener"
+              >Open PDF</a
+            >
+          </div>
+
+          <div class="row">
+            <div class="left">
+              <div class="name">Ontology</div>
+              <div class="desc">
+                Defines what exists in-system and what does not. Only entities
+                that can be bounded, verified, suppressed, and recorded exist.
+              </div>
+              <div class="meta">PDF: ONTOLOGY</div>
+            </div>
+            <a
+              class="btn"
+              href="https://mm.limited/pdfs/ONTOLOGY.pdf"
+              target="_blank"
+              rel="noopener"
+              >Open PDF</a
+            >
+          </div>
+
+          <div class="row">
+            <div class="left">
+              <div class="name">Operating Doctrine</div>
+              <div class="desc">
+                Binding rules of operation: no action without verification; no
+                mutation without continuity; no interpretation without record;
+                no authority without constraint.
+              </div>
+              <div class="meta">PDF: OPERATING DOCTRINE</div>
+            </div>
+            <a
+              class="btn"
+              href="https://mm.limited/pdfs/OPERATING%20DOCTRINE.pdf"
+              target="_blank"
+              rel="noopener"
+              >Open PDF</a
+            >
+          </div>
+
+          <div class="row">
+            <div class="left">
+              <div class="name">System Purpose</div>
+              <div class="desc">
+                Purpose axiom and scope: preserve coherence between reality,
+                action, and consequence.
+              </div>
+              <div class="meta">PDF: SYSTEM PURPOSE</div>
+            </div>
+            <a
+              class="btn"
+              href="https://mm.limited/pdfs/SYSTEM%20PURPOSE.pdf"
+              target="_blank"
+              rel="noopener"
+              >Open PDF</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="hd"><h2>Protocol Library</h2></div>
+        <div class="bd">
+          <div class="row">
+            <div class="left">
+              <div class="name">Invariant Protocols (I.01–I.10)</div>
+              <div class="desc">
+                Canonical, hash-pinned PDFs with EVOLVE_ONLY mutation rules.
+              </div>
+              <div class="meta">Hosted: event.limited</div>
+            </div>
+            <a
+              class="btn"
+              href="https://event.limited/"
+              target="_blank"
+              rel="noopener"
+              >Open Library</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="bd">
+          <div class="row">
+            <div class="left">
+              <div class="name">Reality Declaration</div>
+              <div class="desc">
+                Non-executing declaration binding this surface to the canonical
+                integrity anchor.
+              </div>
+            </div>
+            <a
+              class="btn"
+              href="https://mm.limited/reality_declaration.json"
+              target="_blank"
+              rel="noopener"
+              >Open Declaration (JSON)</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ADDED: Passive, URL-driven Consequence Witness (read-only) -->
+      <section class="card">
+        <div class="hd"><h2>Consequence Witness</h2></div>
+        <div class="bd">
+          <div class="row" style="align-items: flex-start">
+            <div class="left" style="width: 100%">
+              <div class="name">Live Artifact</div>
+              <div class="desc">
+                Read-only output. Inputs are derived from this page URL.
+              </div>
+              <div class="meta" id="cw-source">Source: /outcome?…</div>
+
+              <pre
+                id="cw-result"
+                style="
+                  margin-top: 12px;
+                  padding: 12px;
+                  border: 1px solid var(--line);
+                  border-radius: 14px;
+                  background: rgba(0, 0, 0, 0.35);
+                  color: var(--text);
+                  font-family: var(--mono);
+                  white-space: pre-wrap;
+                  overflow: auto;
+                  max-height: 360px;
+                "
+              >
+↺</pre
+              >
+            </div>
+
+            <a
+              class="btn"
+              id="cw-open"
+              href="/outcome"
+              target="_blank"
+              rel="noopener"
+              >Open JSON</a
+            >
+          </div>
+        </div>
+      </section>
+      <!-- /ADDED -->
+
+      <footer>
+        <div class="line"></div>
+        mm.limited - Root Framework - KENTRA INTEGRITY SYSTEMS LTD
+      </footer>
     </div>
 
-    <h2>Ontology</h2>
-    <div class="box">
-      <div class="row">
-        <div class="small">Canonical PDF hosted on <b>event.limited</b></div>
-        <a class="btn" href="https://event.limited/pdfs/ONTOLOGY.pdf" target="_blank" rel="noopener">Open PDF</a>
-      </div>
-      <p><b>Core objects:</b> Signal, Awareness, Intent, Event, Presence, Evidence, Verification, Resolution, Continuity, Ledger, Identity, Agent, Protocol, Suppression.</p>
-      <p><b>Rule:</b> only entities that can be bounded, verified, suppressed, and recorded exist in-system.</p>
-    </div>
+    <!-- ADDED: URL-driven probe (no UI, no interaction) -->
+    <script>
+      (async () => {
+        const defaults = {
+          intent: "observe",
+          event: "view",
+          actor: "anonymous",
+          scope: "public",
+        };
 
-    <h2>Operating Doctrine</h2>
-    <div class="box">
-      <div class="row">
-        <div class="small">Canonical PDF hosted on <b>event.limited</b></div>
-        <a class="btn" href="https://event.limited/pdfs/OPERATING%20DOCTRINE.pdf" target="_blank" rel="noopener">Open PDF</a>
-      </div>
-      <ul>
-        <li>No action without verification.</li>
-        <li>No mutation without continuity.</li>
-        <li>No interpretation without record.</li>
-        <li>No authority without constraint.</li>
-      </ul>
-    </div>
+        const p = new URLSearchParams(location.search);
+        const q = new URLSearchParams({
+          intent: p.get("intent") || defaults.intent,
+          event: p.get("event") || defaults.event,
+          actor: p.get("actor") || defaults.actor,
+          scope: p.get("scope") || defaults.scope,
+        });
 
-    <h2>System Purpose</h2>
-    <div class="box">
-      <div class="row">
-        <div class="small">Canonical PDF hosted on <b>event.limited</b></div>
-        <a class="btn" href="https://event.limited/pdfs/SYSTEM%20PURPOSE.pdf" target="_blank" rel="noopener">Open PDF</a>
-      </div>
-      <p>The system exists to preserve coherence between reality, action, and consequence.</p>
-    </div>
+        const url = new URL("/outcome", location.origin);
+        url.search = q.toString();
 
-    <h2>Reality Declaration</h2>
-    <div class="box">
-      <div class="row">
-        <div class="small">Raw artifact on this domain</div>
-        <a class="btn" href="https://mm.limited/reality_declaration.json" target="_blank" rel="noopener">Open JSON</a>
-      </div>
-      <p class="small">Declared. Non-executing. Reference-only.</p>
-    </div>
+        const srcEl = document.querySelector("#cw-source");
+        const openEl = document.querySelector("#cw-open");
+        const outEl = document.querySelector("#cw-result");
 
-    <p class="meta">mm.limited — reference surface</p>
-  </div>
-</body>
+        if (srcEl)
+          srcEl.textContent = `Source: ${url.pathname}?${q.toString()}`;
+        if (openEl)
+          openEl.setAttribute("href", `${url.pathname}?${q.toString()}`);
+
+        try {
+          const r = await fetch(url.toString(), {
+            cache: "no-store",
+            headers: { accept: "application/json" },
+          });
+
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+
+          const text = await r.text();
+          let j;
+          try {
+            j = JSON.parse(text);
+          } catch {
+            throw new Error("Non-JSON response");
+          }
+
+          if (outEl) outEl.textContent = JSON.stringify(j, null, 2);
+        } catch (e) {
+          if (!outEl) return;
+          outEl.textContent =
+            "Outcome unavailable.\n" +
+            `Tried: ${url.toString()}\n\n` +
+            "Most common cause:\n" +
+            "• Deployed via direct folder upload to Cloudflare Pages\n" +
+            "• Pages Functions (/functions/outcome.ts) do not execute\n\n" +
+            "Fix:\n" +
+            "• Deploy via Git integration or Wrangler\n\n" +
+            `Error: ${String(e && e.message ? e.message : e)}`;
+        }
+      })();
+    </script>
+    <!-- /ADDED -->
+  </body>
 </html>
