@@ -555,14 +555,13 @@
       })();
     </script>
     <!-- /ADDED -->
-    </div>
 
     <script>
       // Expose build/version for audits and debugging (read-only)
       window.MM_VERSION = "MM-MENTAL-MODEL 1.12";
 
       // Surface build metadata (read-only)
-      fetch("/version.json")
+      fetch("/version")
         .then((r) => r.json())
         .then((v) => {
           window.MM_BUILD = v;
