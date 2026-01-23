@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="index" />
-    <title>MMMM - MM-Mental-Model</title>
+    <title>MM-MENTAL-MODEL 1.12</title>
 
     <style>
       :root {
@@ -351,6 +351,19 @@
         <div class="bd">
           <div class="row">
             <div class="left">
+              <div class="name">Consequences Sandbox</div>
+              <div class="desc">Interactive probe. Change inputs. URL becomes the artifact.</div>
+              <div class="meta">Path: /consequences.html</div>
+            </div>
+            <a class="btn" href="/consequences.html" target="_blank" rel="noopener">Open</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="bd">
+          <div class="row">
+            <div class="left">
               <div class="name">Reality Declaration</div>
               <div class="desc">
                 Non-executing declaration binding this surface to the canonical
@@ -379,6 +392,7 @@
                 Read-only output. Inputs are derived from this page URL.
               </div>
               <div class="meta" id="cw-source">Source: /outcome?…</div>
+              <div class="meta" id="cw-summary">Decision: —</div>
 
               <pre
                 id="cw-result"
@@ -402,7 +416,7 @@
             <a
               class="btn"
               id="cw-open"
-              href="/outcome"
+              href="/outcome?intent=observe&event=view&actor=anonymous&scope=public"
               target="_blank"
               rel="noopener"
               >Open JSON</a
@@ -411,6 +425,12 @@
         </div>
       </section>
       <!-- /ADDED -->
+
+      <div class="meta" style="text-align:center; margin-top:18px;">
+        This stack was explored with machine-assisted cognition capable of holding non-linear,
+        multi-threaded states without narrative collapse. Tooling included large language models
+        (OpenAI) used as cognitive infrastructure, not authority.
+      </div>
 
       <footer>
         <div class="line"></div>
@@ -442,6 +462,7 @@
         const srcEl = document.querySelector("#cw-source");
         const openEl = document.querySelector("#cw-open");
         const outEl = document.querySelector("#cw-result");
+        const sumEl = document.querySelector("#cw-summary");
 
         if (srcEl)
           srcEl.textContent = `Source: ${url.pathname}?${q.toString()}`;
@@ -465,7 +486,14 @@
           }
 
           if (outEl) outEl.textContent = JSON.stringify(j, null, 2);
+
+          if (sumEl && j && j.artifact) {
+            const d = j.artifact.decision;
+            const a = j.artifact.consequences && j.artifact.consequences.access;
+            sumEl.textContent = `Decision: ${d} → ${a || "—"}`;
+          }
         } catch (e) {
+          if (sumEl) sumEl.textContent = "Decision: —";
           if (!outEl) return;
           outEl.textContent =
             "Outcome unavailable.\n" +
@@ -482,3 +510,4 @@
     <!-- /ADDED -->
   </body>
 </html>
+          
