@@ -1,13 +1,16 @@
-export async function onRequest() {
+// /functions/version.ts
+// Canonical build/version endpoint (read-only)
+// Exposed at: /version
+
+export const onRequestGet = async () => {
   const version = "MM-MENTAL-MODEL 1.12";
 
   const payload = {
     name: "mm.limited",
     version,
     environment: "production",
-    // Cloudflare Pages injects this automatically
-    commit: (process.env.CF_PAGES_COMMIT_SHA ?? null),
-    branch: (process.env.CF_PAGES_BRANCH ?? null),
+    commit: (typeof process !== "undefined" && process.env?.CF_PAGES_COMMIT_SHA) || null,
+    branch: (typeof process !== "undefined" && process.env?.CF_PAGES_BRANCH) || null,
     deployed_at: new Date().toISOString(),
     posture: "read-only",
   };
@@ -18,4 +21,4 @@ export async function onRequest() {
       "cache-control": "no-store",
     },
   });
-}
+};
