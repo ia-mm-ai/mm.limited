@@ -247,6 +247,25 @@
       </div>
 
       <section class="card">
+        <div class="hd"><h2>Orientation</h2></div>
+        <div class="bd">
+          <div class="row" style="align-items:flex-start;">
+            <div class="left">
+              <div class="name">How to read this surface</div>
+              <div class="desc">
+                This page is the human index. It points to canonical artifacts and witness surfaces.
+                Start with the Core Architecture PDFs, then the Protocol Library (I.01–I.10).
+                Use the Consequence Sandbox to probe how <span style="font-family:var(--mono)">intent/event/actor/scope</span>
+                map to a deterministic outcome artifact, and the Consequence Witness below to view the same output read-only.
+              </div>
+              <div class="meta">Triad: mm.limited (index) → event.limited (protocol canon) → 22.limited (resolution registry)</div>
+            </div>
+            <a class="btn" href="#consequence-witness" style="align-self:flex-start;">Jump to Witness</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
         <div class="hd"><h2>Core Architecture</h2></div>
         <div class="bd">
           <div class="row">
@@ -344,6 +363,33 @@
               >Open Library</a
             >
           </div>
+
+          <div class="row">
+            <div class="left">
+              <div class="name">Resolution Registry</div>
+              <div class="desc">
+                Public witness surface that lists resolution artifacts (proofs). Confers legitimacy and enforces boundaries.
+              </div>
+              <div class="meta">Hosted: 22.limited</div>
+            </div>
+            <a class="btn" href="https://22.limited/" target="_blank" rel="noopener">Open Registry</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="hd"><h2>Invariant Protocols — At a glance</h2></div>
+        <div class="bd">
+          <div class="row"><div class="left"><div class="name">I.01 — Presence</div><div class="desc">Defines what counts as presence and how presence claims become recordable without interpretation.</div><div class="meta">event.limited • I.01.PRESENCE</div></div><a class="btn" href="https://event.limited/" target="_blank" rel="noopener">Open</a></div>
+          <div class="row"><div class="left"><div class="name">I.02 — Event</div><div class="desc">Binds events to boundaries: what an event is, where it starts/ends, and what is in/out of scope.</div><div class="meta">event.limited • I.02.EVENT</div></div><a class="btn" href="https://event.limited/" target="_blank" rel="noopener">Open</a></div>
+          <div class="row"><div class="left"><div class="name">I.03 — Continuity</div><div class="desc">Prevents regression and silent mutation: a system must stay continuous across change.</div><div class="meta">event.limited • I.03.CONTINUITY</div></div><a class="btn" href="https://event.limited/" target="_blank" rel="noopener">Open</a></div>
+          <div class="row"><div class="left"><div class="name">I.04 — Ledger</div><div class="desc">Non-erasure: what gets recorded cannot be silently removed; lineage must remain observable.</div><div class="meta">event.limited • I.04.LEDGER</div></div><a class="btn" href="https://event.limited/" target="_blank" rel="noopener">Open</a></div>
+          <div class="row"><div class="left"><div class="name">I.05 — Protocol</div><div class="desc">Protocol supremacy: rules outrank preference; skipping/reordering protocols is disallowed.</div><div class="meta">event.limited • I.05.PROTOCOL</div></div><a class="btn" href="https://event.limited/" target="_blank" rel="noopener">Open</a></div>
+          <div class="row"><div class="left"><div class="name">I.06 — Identity</div><div class="desc">Identity is presence-derived: identities are not asserted, they are bounded and evidenced.</div><div class="meta">event.limited • I.06.IDENTITY</div></div><a class="btn" href="https://event.limited/" target="_blank" rel="noopener">Open</a></div>
+          <div class="row"><div class="left"><div class="name">I.07 — Acedia</div><div class="desc">Anti-stagnation: prevents drift into avoidance, ambiguity, or learned helplessness in operations.</div><div class="meta">event.limited • I.07.ACEDIA</div></div><a class="btn" href="https://event.limited/" target="_blank" rel="noopener">Open</a></div>
+          <div class="row"><div class="left"><div class="name">I.08 — Signal</div><div class="desc">Signal coherence: keeps inputs legible and reduces distortion between signal and downstream consequence.</div><div class="meta">event.limited • I.08.SIGNAL</div></div><a class="btn" href="https://event.limited/" target="_blank" rel="noopener">Open</a></div>
+          <div class="row"><div class="left"><div class="name">I.09 — Co-Agency</div><div class="desc">Balances multi-agent interaction: prevents domination, leakage, and unbounded authority transfer.</div><div class="meta">event.limited • I.09.COAGENCY</div></div><a class="btn" href="https://event.limited/" target="_blank" rel="noopener">Open</a></div>
+          <div class="row"><div class="left"><div class="name">I.10 — Interpretability</div><div class="desc">Future readability: artifacts must remain interpretable later without relying on private context.</div><div class="meta">event.limited • I.10.INTERPRETABILITY</div></div><a class="btn" href="https://event.limited/" target="_blank" rel="noopener">Open</a></div>
         </div>
       </section>
 
@@ -382,7 +428,7 @@
       </section>
 
       <!-- ADDED: Passive, URL-driven Consequence Witness (read-only) -->
-      <section class="card">
+      <section class="card" id="consequence-witness">
         <div class="hd"><h2>Consequence Witness</h2></div>
         <div class="bd">
           <div class="row" style="align-items: flex-start">
@@ -510,4 +556,3 @@
     <!-- /ADDED -->
   </body>
 </html>
-          
