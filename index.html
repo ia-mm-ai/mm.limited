@@ -555,11 +555,24 @@
       })();
     </script>
     <!-- /ADDED -->
-</div>
+    </div>
 
     <script>
       // Expose build/version for audits and debugging (read-only)
       window.MM_VERSION = "MM-MENTAL-MODEL 1.12";
+
+      // Surface build metadata (read-only)
+      fetch("/version.json")
+        .then((r) => r.json())
+        .then((v) => {
+          window.MM_BUILD = v;
+          console.info(
+            "MM build:",
+            v.version,
+            v.commit ? String(v.commit).slice(0, 7) : "no-commit",
+          );
+        })
+        .catch(() => {});
     </script>
   </body>
 </html>
