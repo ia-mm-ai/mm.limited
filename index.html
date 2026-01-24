@@ -288,6 +288,30 @@
             >
           </div>
 
+          <!-- ADDED: Machine-readable MD artifacts -->
+          <div class="row">
+            <div class="left">
+              <div class="name">REALITY STACK (MD)</div>
+              <div class="desc">Machine-readable consolidated artifact.</div>
+              <div class="meta">MD: REALITY STACK</div>
+            </div>
+            <a class="btn" href="/reality_stack.md" target="_blank" rel="noopener"
+              >Open MD</a
+            >
+          </div>
+
+          <div class="row">
+            <div class="left">
+              <div class="name">INVARIANTS (MD)</div>
+              <div class="desc">Machine-readable invariant set (I.01–I.10).</div>
+              <div class="meta">MD: INVARIANTS</div>
+            </div>
+            <a class="btn" href="/protocols.md" target="_blank" rel="noopener"
+              >Open MD</a
+            >
+          </div>
+          <!-- /ADDED -->
+
           <div class="row">
             <div class="left">
               <div class="name">Ontology</div>
@@ -536,8 +560,10 @@
 
           if (sumEl && j && j.artifact) {
             const d = j.artifact.decision;
+            const r0 = j.artifact.result; // optional (future)
             const a = j.artifact.consequences && j.artifact.consequences.access;
-            sumEl.textContent = `Decision: ${d} → ${a || "—"}`;
+            const out = r0 || a || "—";
+            sumEl.textContent = `Decision: ${d} → ${out}`;
           }
         } catch (e) {
           if (sumEl) sumEl.textContent = "Decision: —";
