@@ -9,9 +9,12 @@ export const onRequestGet = async () => {
     name: "mm.limited",
     version,
     environment: "production",
-    commit: (typeof process !== "undefined" && process.env?.CF_PAGES_COMMIT_SHA) || null,
-    branch: (typeof process !== "undefined" && process.env?.CF_PAGES_BRANCH) || null,
-    deployed_at: new Date().toISOString(),
+    commit:
+      (typeof process !== "undefined" && process.env?.CF_PAGES_COMMIT_SHA) ||
+      null,
+    branch:
+      (typeof process !== "undefined" && process.env?.CF_PAGES_BRANCH) || null,
+    observed_at: new Date().toISOString(),
     posture: "read-only",
   };
 
